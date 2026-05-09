@@ -104,10 +104,18 @@ function showToast(msg) {
 }
 
 // ---- Resume Button ----
+document.getElementById('resumeBtn').addEventListener('click', function(e) {
+    const hasResume = true; // ✅ changed to true
+    if (!hasResume) {
+        e.preventDefault();
+        showToast();
+    }
+});
+
 const resumeBtns = document.querySelectorAll('.resume-trigger');
 resumeBtns.forEach(btn => {
     btn.addEventListener('click', function (e) {
-        const hasResume = false; // Set to true and add resume.pdf to folder to enable download
+        const hasResume = true; // Set to true and add resume.pdf to folder to enable download
         if (!hasResume) {
             e.preventDefault();
             showToast('📄 Resume coming soon! Check back later.');
