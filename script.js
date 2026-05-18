@@ -20,22 +20,21 @@ const navLinks = document.querySelectorAll('nav ul li a');
 window.addEventListener('scroll', () => {
     let current = '';
     sections.forEach(section => {
-        if (window.scrollY >= section.offsetTop - 130) current = section.getAttribute('id');
+        if (window.scrollY >= section.offsetTop - 120) current = section.getAttribute('id');
     });
     navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === '#' + current) link.classList.add('active');
+        link.style.color = '';
+        if (link.getAttribute('href') === '#' + current) link.style.color = '#f51782';
     });
 });
 
 // ---- Typing Animation ----
 const typingEl = document.querySelector('.header-text p');
 if (typingEl) {
-    const text = typingEl.getAttribute('data-text') || typingEl.textContent;
+    const text = typingEl.textContent;
     typingEl.textContent = '';
-    typingEl.setAttribute('data-text', text);
+    typingEl.style.opacity = '1';
 
-    // Add blinking cursor
     const cursor = document.createElement('span');
     cursor.className = 'cursor';
     typingEl.appendChild(cursor);
@@ -47,7 +46,7 @@ if (typingEl) {
             i++;
             if (i >= text.length) clearInterval(interval);
         }, 55);
-    }, 900);
+    }, 800);
 }
 
 // ---- Scroll-Reveal for Project Cards ----
@@ -57,7 +56,7 @@ const cardObserver = new IntersectionObserver((entries) => {
         if (entry.isIntersecting) {
             setTimeout(() => {
                 entry.target.style.animation = 'fadeUp 0.6s ease forwards';
-            }, i * 130);
+            }, i * 120);
             cardObserver.unobserve(entry.target);
         }
     });
@@ -65,7 +64,7 @@ const cardObserver = new IntersectionObserver((entries) => {
 cards.forEach(card => cardObserver.observe(card));
 
 // ---- Scroll-Reveal for Other Elements ----
-const revealEls = document.querySelectorAll('.contact-card, .about-col-1, .about-col-2, .social-icons');
+const revealEls = document.querySelectorAll('.contact-card, .about-col-1, .about-col-2');
 revealEls.forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(30px)';
@@ -105,22 +104,11 @@ function showToast(msg) {
 
 // ---- Resume Button ----
 document.getElementById('resumeBtn').addEventListener('click', function(e) {
-    const hasResume = true; // ✅ changed to true
+    const hasResume = true;
     if (!hasResume) {
         e.preventDefault();
-        showToast();
+        showToast('📄 Resume coming soon! Check back later.');
     }
-});
-
-const resumeBtns = document.querySelectorAll('.resume-trigger');
-resumeBtns.forEach(btn => {
-    btn.addEventListener('click', function (e) {
-        const hasResume = true; // Set to true and add resume.pdf to folder to enable download
-        if (!hasResume) {
-            e.preventDefault();
-            showToast('📄 Resume coming soon! Check back later.');
-        }
-    });
 });
 
 // ---- Project Card Tilt Effect ----
