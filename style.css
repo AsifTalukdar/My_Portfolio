@@ -123,23 +123,23 @@ nav ul li a:hover {
 
 .header-content { flex: 1; min-width: 280px; }
 
+/* ---- Header Photo ---- */
 .header-photo {
-    flex: 0 0 260px;
-    max-width: 260px;
+    flex: 0 0 240px;
+    width: 240px;
     position: relative;
     z-index: 2;
 }
 
 .header-photo img {
-    width: 100%;
-    height: 320px;
+    width: 240px;
+    height: 300px;
     object-fit: cover;
     object-position: center top;
     border-radius: 20px;
     border: 2px solid rgba(245,23,130,0.25);
     box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 40px rgba(245,23,130,0.1);
-    filter: grayscale(5%);
-    animation: fadeUp 0.9s ease 0.4s both;
+    display: block;
 }
 
 .header-photo::before {
@@ -183,6 +183,7 @@ nav ul li a:hover {
     letter-spacing: 2px;
     text-transform: uppercase;
     animation: fadeUp 0.8s ease 0.2s both;
+    min-height: 22px;
 }
 
 .header-cta {
@@ -280,19 +281,25 @@ nav ul li a:hover {
     gap: 60px;
 }
 
-.about-col-1 { flex-basis: 35%; min-width: 240px; max-width: 300px; }
+/* ---- About Photo ---- */
+.about-col-1 {
+    flex: 0 0 260px;
+    width: 260px;
+    min-width: 200px;
+}
 
 .about-col-1 img {
-    width: 100%;
-    height: 360px;
+    width: 260px;
+    height: 340px;
     object-fit: cover;
     object-position: center top;
     border-radius: 16px;
     filter: grayscale(20%);
     border: 1px solid var(--border);
+    display: block;
 }
 
-.about-col-2 { flex-basis: 58%; min-width: 280px; }
+.about-col-2 { flex: 1; min-width: 280px; }
 
 .about-col-2 > p {
     color: var(--muted);
@@ -605,9 +612,9 @@ nav ul li a:hover {
 
 /* ============ RESPONSIVE ============ */
 @media (max-width: 900px) {
-    .header-photo { flex: 0 0 100%; max-width: 220px; margin: 0 auto; }
-    .header-photo img { height: 260px; }
     #header .inner { flex-direction: column-reverse; align-items: center; text-align: center; }
+    .header-photo { flex: 0 0 auto; width: 200px; }
+    .header-photo img { width: 200px; height: 250px; }
     .header-cta { justify-content: center; }
 }
 
@@ -615,7 +622,8 @@ nav ul li a:hover {
     nav { padding: 14px 5%; }
     .container { padding: 0 5%; }
     #about, #projects, #contact { padding: 70px 0; }
-    .about-col-1, .about-col-2 { flex-basis: 100%; }
+    .about-col-1 { flex: 0 0 100%; width: 100%; }
+    .about-col-1 img { width: 100%; height: 280px; }
     .section-divider { margin: 0 5%; }
     nav ul li a { padding: 6px 10px; font-size: 12px; }
     #header .inner { padding: 0 5%; }
@@ -625,4 +633,5 @@ nav ul li a:hover {
     .header-text h1 { letter-spacing: -2px; }
     .tab-links { font-size: 11px; padding: 7px 14px; }
     .projects-grid { grid-template-columns: 1fr; }
+    .btn-cv { padding: 12px 20px; font-size: 13px; }
 }
