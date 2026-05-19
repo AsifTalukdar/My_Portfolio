@@ -292,7 +292,7 @@ nav ul li a:hover {
     width: 260px;
     height: 340px;
     object-fit: cover;
-    object-position: center top;
+    object-position: right center;;
     border-radius: 16px;
     filter: grayscale(20%);
     border: 1px solid var(--border);
